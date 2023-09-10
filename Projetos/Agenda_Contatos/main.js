@@ -2,13 +2,11 @@ const form = document.getElementById("form-agenda");
 const imgAmigo = '<img src="Icones/amigo.png" alt="Emotion Amigos"/>';
 const imgfamilia = '<img src="Icones/familia.png"" alt="Emotion Triste"/>';
 const imgEmpresa = '<img src="Icones/empresa.png"" alt="Emotion Triste"/>';
+const imgDesconhecido = '<img src="Icones/desconhecido.png"" alt="Emotion Triste"/>';
 const nomesContato = [];
 const numeroContato = [];
 const emailContato =[];
 const aproximacaoContato =[];
-const spanAprovado = '<span class="resultado aprovado">Aprovado</span>';
-const spanReprovado = '<span class="resultado reprovado">Reprovado</span>';
-//const valorMedia = parseFloat(prompt('Qual  valor mínimo da Média? '));
 
 let linhas = '';
 
@@ -17,8 +15,6 @@ form.addEventListener('submit', function(e){
 
    adicinaLinha();
    atualizaTabela();
-//    atualizaMediaFinal();
-
 });
 
 function adicinaLinha(){
@@ -36,7 +32,7 @@ function adicinaLinha(){
         emailContato.push(inputEmailContato.value);    
         numeroContato.push(parseInt(inputNumeroContato.value)); 
         aproximacaoContato.push(inputAproximacao.value);    
-         console.log("olá")
+       
 
         //Adicionando novas Linhas
         let linha = '<tr>';
@@ -46,13 +42,15 @@ function adicinaLinha(){
         linha += `<td>${inputAproximacao.value}</td>`;
         // linha += `<td>${inputAproximacao.value >= 'Familia' ? imgfamilia : imgEmpresa}</td>`;
 
-        if(inputAproximacao.value == 'Familia'){
+        if(inputAproximacao.value == 'família' || inputAproximacao.value == 'Família' || inputAproximacao.value == 'Familia' || inputAproximacao.value == 'familia'){
             linha += `<td>${inputAproximacao.value = imgfamilia}</td>`;
 
-        }else if(inputAproximacao.value == 'Amigo'){
+        }else if(inputAproximacao.value == 'amigo'|| inputAproximacao.value == 'Amigo'){
             linha += `<td>${inputAproximacao.value = imgAmigo}</td>`;
-        }else{
+        }else if(inputAproximacao.value == 'empresa' || inputAproximacao.value == 'Empresa' ){
             linha += `<td>${inputAproximacao.value = imgEmpresa}</td>`;
+        }else{
+            linha += `<td>${inputAproximacao.value = imgDesconhecido}</td>`;
         }
 
         linha += `</tr>`;
@@ -68,25 +66,11 @@ function adicinaLinha(){
 
 }
 
+//Chamando a tabela  
 function atualizaTabela(){
     const corpoTabela  = document.querySelector('tbody');
     corpoTabela.innerHTML = linhas;
 }
 
-// function atualizaMediaFinal(){
-//     const mediaFinal = calculaMedia();
-//     document.getElementById('mediaFinal-valor').innerHTML = mediaFinal.toFixed(2);
-//     document.getElementById('mediaFinal-resultado').innerHTML = mediaFinal > valorMedia ? spanAprovado: spanReprovado;
-    
-//     //console.log(atualizaMedia);
-// }
 
-function calculaMedia(){
-    
-    let soma = 0;
-    for(i=0; i<notas.length;i++){
-        soma += notas[i];
-    }
-    return soma / notas.length;
-}
 

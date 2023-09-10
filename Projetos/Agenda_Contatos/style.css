@@ -53,7 +53,7 @@ form input {
     background-color: #e7e7e7;
     border: none;
     border-bottom: 2px solid black;
-    padding: 6px;
+    padding: 10px ;
     margin-right: 10px;
 }
 
@@ -61,9 +61,11 @@ form button {
     background-color:black;
     font-size: 20px;
     font-weight: bold;
-    border: none;
+    border: 1px;
+    border-radius: 10px;
     cursor: pointer;
     color: aliceblue;
+    padding: 5px;
 
     
 }
@@ -100,10 +102,4 @@ table td img{
     background-color: black;
     border-radius: 3px;
 
-}
-.aprovado{
-    background-color: #009432;
-}
-.reprovado{
-    background-color: red;
 }
